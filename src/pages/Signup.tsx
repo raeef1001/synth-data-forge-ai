@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import { signUpWithEmail } from '@/lib/firebase';
+import { registerUser } from '@/lib/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +21,6 @@ const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -43,22 +44,28 @@ const Signup = () => {
     
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Signup attempt:', formData);
-    
-    // Simulate successful signup
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userEmail', formData.email);
-    
-    toast({
-      title: "Account created!",
-      description: "Welcome to DataForge. Let's get you started.",
-    });
-    
-    navigate('/dashboard');
-    setIsLoading(false);
+    try {
+      // Register user with Firebase
+      await signUpWithEmail(formData.email, formData.password);
+      
+      // Register user in the backend
+      await registerUser(formData.email, formData.password);
+      
+      toast({
+        title: "Account created!",
+        description: "Welcome to DataForge. Let's get you started.",
+      });
+      
+      navigate('/dashboard');
+    } catch (error: any) {
+      toast({
+        title: "Registration failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

@@ -24,8 +24,7 @@ const SchemaBuilderPage = () => {
   const [aiDescription, setAiDescription] = useState('');
   const [preserveRelationships, setPreserveRelationships] = useState(true);
   const [exportFormat, setExportFormat] = useState('json');
-
-  const handleSaveSchema = () => {
+  const handleSaveSchema = async () => {
     if (!schemaName.trim()) {
       toast.error('Please enter a schema name');
       return;
@@ -44,12 +43,15 @@ const SchemaBuilderPage = () => {
       createdAt: new Date().toISOString(),
     };
     
-    // Save to localStorage for demo
-    const savedSchemas = JSON.parse(localStorage.getItem('schemas') || '[]');
-    savedSchemas.push(schema);
-    localStorage.setItem('schemas', JSON.stringify(savedSchemas));
-    
-    toast.success('Schema saved successfully!');
+    try {
+      await schemaApi.create(schema);
+      toast.success('Schema saved successfully!');
+      
+      // Optionally navigate to the schema list
+      navigate('/schemas');
+    } catch (error: any) {
+      toast.error(error.message);
+    }
   };
 
   const handleGenerateFromAI = () => {
