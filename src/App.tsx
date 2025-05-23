@@ -14,6 +14,9 @@ import Dashboard from "./pages/Dashboard";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import SchemaBuilder from "./pages/SchemaBuilder";
+import Templates from "./pages/Templates";
+import Playground from "./pages/Playground";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +34,9 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/schema-builder" element={<SchemaBuilder />} />
+          <Route path="/templates" element={<Templates />} />
+          <Route path="/playground" element={<Playground />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
