@@ -23,6 +23,7 @@ export const Header = () => {
     { name: 'Documentation', href: '/docs' },
     { name: 'Templates', href: '/templates' },
     { name: 'Playground', href: '/playground' },
+    { name: 'Community', href: '/community' },
   ];
 
   return (
@@ -44,7 +45,7 @@ export const Header = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Platform</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <div className="grid gap-3 p-6 w-[400px] lg:w-[600px] lg:grid-cols-2">
                       <div className="row-span-3">
                         <NavigationMenuLink asChild>
                           <Link
@@ -60,33 +61,89 @@ export const Header = () => {
                           </Link>
                         </NavigationMenuLink>
                       </div>
-                      <div className="grid gap-3">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/templates"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium leading-none">Templates</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Pre-built schemas for common use cases
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/playground"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium leading-none">API Playground</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Test and explore our APIs interactively
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </div>
+                      
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/templates"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">Templates</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Pre-built schemas for common use cases
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                      
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/playground"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">API Playground</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Test and explore our APIs interactively
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                      
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/visualize"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">Data Visualization</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Create interactive charts and visualizations
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/explorer"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">Data Explorer</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Browse and analyze your generated data
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-[400px] md:w-[500px] md:grid-cols-2">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/api-management"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">API Management</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Manage your API keys, settings and monitor usage
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                      
+                      <NavigationMenuLink asChild>
+                        <Link
+                          to="/community"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">Community</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Share and discover data schemas and visualizations
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                
                 {navigation.slice(0, 3).map((item) => (
                   <NavigationMenuItem key={item.name}>
                     <Link
@@ -164,6 +221,27 @@ export const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              <Link
+                to="/visualize"
+                className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Data Visualization
+              </Link>
+              <Link
+                to="/explorer"
+                className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Data Explorer
+              </Link>
+              <Link
+                to="/api-management"
+                className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                API Management
+              </Link>
               <div className="flex flex-col space-y-2 pt-4">
                 {isLoggedIn ? (
                   <>

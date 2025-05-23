@@ -17,6 +17,10 @@ import NotFound from "./pages/NotFound";
 import SchemaBuilder from "./pages/SchemaBuilder";
 import Templates from "./pages/Templates";
 import Playground from "./pages/Playground";
+import DataVisualization from "./pages/DataVisualization";
+import Community from "./pages/Community";
+import ApiManagement from "./pages/ApiManagement";
+import DataExplorer from "./pages/DataExplorer";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +41,10 @@ const App = () => (
           <Route path="/schema-builder" element={<SchemaBuilder />} />
           <Route path="/templates" element={<Templates />} />
           <Route path="/playground" element={<Playground />} />
+          <Route path="/visualize" element={<DataVisualization />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/api-management" element={<ApiManagement />} />
+          <Route path="/explorer" element={<DataExplorer />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
